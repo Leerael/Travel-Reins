@@ -1,0 +1,114 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<p>You can pick dates for many things, but you should always start with your arrival and departure dates.</p>
+
+<div class="row">
+    <div class="jumbotron col-lg-12">
+
+        <div class="row">
+            <div class="container col-lg-12">
+                <div class="form-group">
+                    <label for="sel1">Select Country:</label>
+                    <select class="form-control" id="sel1">
+                        <option>Australia</option>
+                        <option>Indonesia</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="container col-lg-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Place</th>
+                            <th scope="col">Activity Type</th>
+                            <th scope="col">Activity</th>
+                            <th scope="col">Start Date & Time</th>
+                            <th scope="col">End Date & Time</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Indonesia</td>
+                            <td>Denpasar</td>
+                            <td>Transport</td>
+                            <td>Flight</td>
+                            <td>30/10/2019 06:00:00</td>
+                            <td>30/10/2019 12:00:00</td>
+                            <td>6 hrs</td>
+                            <td>$100.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Indonesia</td>
+                            <td>Denpasar</td>
+                            <td>Sightseeing</td>
+                            <td>Mountain Climb</td>
+                            <td>31/10/2019 01:00:00</td>
+                            <td>01/11/2019 14:00:00</td>
+                            <td>37 hrs</td>
+                            <td>$250.53</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Indonesia</td>
+                            <td>Denpasar</td>
+                            <td>Sport</td>
+                            <td>Diving</td>
+                            <td>02/11/2019 06:00:00</td>
+                            <td>02/11/2019 19:00:00</td>
+                            <td>13 hrs</td>
+                            <td>$300.00</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">3</th>
+                            <td>Australia</td>
+                            <td>Adelaide</td>
+                            <td>Transport</td>
+                            <td>Flight</td>
+                            <td>04/11/2019 12:00:00</td>
+                            <td>04/11/2019 18:00:00</td>
+                            <td>6 hrs</td>
+                            <td>$102.30</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="jumbotron col-lg-12">
+        <div class="row">
+            <div class="container col-lg-12">
+                <ul>
+                    <li>
+                        <p>Arrival/Departure</p>
+                        <div class="container col-lg-12 collapse">
+                            <p>Arrival Date</p>
+                        </div>
+                    </li>
+                    <li><p>Locations</p></li>
+                    <li><p>Transport</p></li>
+                    <li><p>Activities</p></li>
+                    <li><p>Accommodation</p></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

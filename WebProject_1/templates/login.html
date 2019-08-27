@@ -1,0 +1,74 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<p>You can login if you already have an account, or signup if you don't have one yet.</p>
+
+
+<div class="row">
+    <div class="jumbotron col-lg-3 col-lg-offset-1">
+        <div class="row">
+            <div class="container col-lg-12 text-center">
+                <h2>Login</h2>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div tag="Login" class="panel col-lg-12 text-center">
+                <br />
+                {% from "_formhelpers.html" import render_field %}
+                <form action="login" method=post>
+                    {{ signupForm.hidden_tag() }}
+                    <dl>
+                        {{ render_field(loginForm.username) }}
+                        {{ render_field(loginForm.password) }}
+                    </dl>
+                    {% if connError %}
+                    <p class="text-danger">{{ connError }}</p>
+                    {% endif %}
+                    <p><input class="btn btn-default" type=submit value=Login /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="jumbotron col-lg-6 col-lg-offset-1">
+        <div class="row">
+            <div class="container col-lg-12 text-center">
+                <h2>Signup</h2>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div tag="Signup" class="panel col-lg-12 text-center">
+                <br />
+                {% from "_formhelpers.html" import render_field %}
+                <form action="signup" method=post>
+                    {{ signupForm.hidden_tag() }}
+                    <dl>
+                        {{ render_field(signupForm.username) }}
+                        {{ render_field(signupForm.password) }}
+                        {{ render_field(signupForm.confirm) }}
+                        <br />
+                        {{ render_field(signupForm.firstName) }}
+                        {{ render_field(signupForm.lastName) }}
+                        {{ render_field(signupForm.birthDate) }}
+                        <br />
+                        {{ render_field(signupForm.email) }}
+                        {{ render_field(signupForm.accept_tos) }}
+                    </dl>
+                    {% if connError %}
+                    <p class="text-danger">{{ connError }}</p>
+                    {% endif %}
+                    <p><input class="btn btn-default" type=submit value=Signup /></p>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
