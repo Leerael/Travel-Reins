@@ -17,7 +17,8 @@
     <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
     <Name>WebProject_1</Name>
     <RootNamespace>WebProject_1</RootNamespace>
-    <InterpreterId>Global|VisualStudio|Use this for Flask Development</InterpreterId>
+    <InterpreterId>
+    </InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -82,9 +83,6 @@
     <Content Include="WebProject_1\templates\layout.html" />
     <Content Include="WebProject_1\templates\login.html" />
     <Content Include="WebProject_1\templates\_formhelpers.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <InterpreterReference Include="Global|VisualStudio|Use this for Flask Development" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

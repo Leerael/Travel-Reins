@@ -298,6 +298,21 @@ paket-files/
 __pycache__/
 *.pyc
 
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+.Python
+[Bb]in
+[Ii]nclude
+[Ll]ib
+[Ll]ib64
+[Ll]ocal
+[Ss]cripts
+pyvenv.cfg
+.venv
+pip-selfcheck.json
+venv/
+venv_3-7/
+
 # Cake - Uncomment if you are using it
 # tools/**
 # !tools/packages.config
