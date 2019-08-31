@@ -42,37 +42,110 @@ class Post(db.Model):
 
 class Country(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(140))
+    code = db.Column(db.String(10))
+    code2 = db.Column(db.String(10))
+    name = db.Column(db.String(150))
+    phonecode = db.Column(db.Integer)
     description = db.Column(db.String(255))
     easting = db.Column(db.Numeric(18, 6))
     northing = db.Column(db.Numeric(18, 6))
-    countryStates = db.relationship('CountryState', backref='country', lazy='dynamic')
+    countrySubdivisions = db.relationship('CountrySubdivision', backref='country', lazy='dynamic')
+    cities = db.relationship('City', backref='country', lazy='dynamic')
 
     def __repr__(self):
         return '<Country {}>'.format(self.body)
 
 
-class CountryState(db.Model):
+class CountrySubdivision(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(10))
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+    easting = db.Column(db.Numeric(18, 6))
+    northing = db.Column(db.Numeric(18, 6))
+    countrySubdivisionType_id = db.Column(db.Integer, db.ForeignKey('country_subdivision_type.id'))
+    country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
+    cities = db.relationship('City', backref='country_subdivision', lazy='dynamic')
+
+    def __repr__(self):
+        return '<Country Subdivision {}>'.format(self.body)
+
+class CountrySubdivisionType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(10))
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+    countrySubdivisons = db.relationship('CountrySubdivision', backref='country_subdivision_type', lazy='dynamic')
+
+    def __repr__(self):
+        return '<Country Subdivision Type {}>'.format(self.body)
+
+
+class City(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    code = db.Column(db.String(10))
     name = db.Column(db.String(140))
     description = db.Column(db.String(255))
     easting = db.Column(db.Numeric(18, 6))
     northing = db.Column(db.Numeric(18, 6))
     country_id = db.Column(db.Integer, db.ForeignKey('country.id'))
-    places = db.relationship('Place', backref='country_state', lazy='dynamic')
+    countrySubdivision_id = db.Column(db.Integer, db.ForeignKey('country_subdivision.id'))
 
     def __repr__(self):
-        return '<State {}>'.format(self.body)
+        return '<City {}>'.format(self.body)
 
 
-class Place(db.Model):
+class Currency(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    code = db.Column(db.String(100))
+    symbol = db.Column(db.String(100))
+
+    def __repr__(self):
+        return '<Currency {}>'.format(self.body)
+
+
+class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(140))
     description = db.Column(db.String(255))
-    easting = db.Column(db.Numeric(18, 6))
-    northing = db.Column(db.Numeric(18, 6))
-    countrystate_id = db.Column(db.Integer, db.ForeignKey('country_state.id'))
+    activityType_id = db.Column(db.Integer, db.ForeignKey('activity_type.id'))
 
     def __repr__(self):
-        return '<Place {}>'.format(self.body)
+        return '<Activity {}>'.format(self.body)
 
+class ActivityType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+    countrySubdivisons = db.relationship('Activity', backref='activity_type', lazy='dynamic')
+
+    def __repr__(self):
+        return '<Activity Type {}>'.format(self.body)
+
+
+class EquipmentType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+
+    def __repr__(self):
+        return '<Equipment Type {}>'.format(self.body)
+
+
+class AccommodationType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+
+    def __repr__(self):
+        return '<Accommodation Type {}>'.format(self.body)
+
+
+class TransportType(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(140))
+    description = db.Column(db.String(255))
+
+    def __repr__(self):
+        return '<Transport Type {}>'.format(self.body)

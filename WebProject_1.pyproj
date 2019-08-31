@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebProject_1\" />
+    <Folder Include="WebProject_1\static\images\" />
     <Folder Include="WebProject_1\static\" />
     <Folder Include="WebProject_1\static\content\" />
     <Folder Include="WebProject_1\static\fonts\" />
@@ -51,8 +52,26 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="WebProject_1\static\images\ui-bg_glass_40_ffc73d_1x400.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_highlight-hard_20_0972a5_1x100.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_highlight-soft_33_003147_1x100.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_highlight-soft_35_222222_1x100.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_highlight-soft_44_444444_1x100.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_highlight-soft_80_eeeeee_1x100.png" />
+    <Content Include="WebProject_1\static\images\ui-bg_loop_25_000000_21x21.png" />
+    <Content Include="WebProject_1\static\images\ui-icons_222222_256x240.png" />
+    <Content Include="WebProject_1\static\images\ui-icons_4b8e0b_256x240.png" />
+    <Content Include="WebProject_1\static\images\ui-icons_a83300_256x240.png" />
+    <Content Include="WebProject_1\static\images\ui-icons_cccccc_256x240.png" />
+    <Content Include="WebProject_1\static\images\ui-icons_ffffff_256x240.png" />
     <Content Include="WebProject_1\static\content\bootstrap.css" />
     <Content Include="WebProject_1\static\content\bootstrap.min.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.min.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.structure.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.structure.min.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.theme.css" />
+    <Content Include="WebProject_1\static\content\jquery-ui.theme.min.css" />
     <Content Include="WebProject_1\static\content\site.css" />
     <Content Include="WebProject_1\static\content\webproject.css" />
     <Content Include="WebProject_1\static\fonts\glyphicons-halflings-regular.eot" />
@@ -61,6 +80,11 @@
     <Content Include="WebProject_1\static\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="WebProject_1\static\scripts\bootstrap.js" />
     <Content Include="WebProject_1\static\scripts\bootstrap.min.js" />
+    <Content Include="WebProject_1\static\scripts\jquery-3.4.1.js" />
+    <Content Include="WebProject_1\static\scripts\jquery-3.4.1.min.js" />
+    <Content Include="WebProject_1\static\scripts\jquery-3.4.1.min.map" />
+    <Content Include="WebProject_1\static\scripts\jquery-ui.js" />
+    <Content Include="WebProject_1\static\scripts\jquery-ui.min.js" />
     <Content Include="WebProject_1\static\scripts\webproject.js" />
     <Content Include="WebProject_1\static\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="WebProject_1\static\scripts\jquery-1.10.2.js" />

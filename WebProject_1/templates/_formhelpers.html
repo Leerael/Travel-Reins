@@ -1,16 +1,99 @@
 ﻿{% macro render_field(field) %}
-    <dt>{{ field.label }}
-    {% if instanceof(field(**kwargs)|safe, datetime.date) %}
-    <dd>{{ field(**kwargs)|safe }}
+<dt>
+    {{ field.label }}
+    {% if field.type == "DateField" %}
+    <dd>
+        <!--<div class="container">
+            <div class="row">
+                <div class='col-sm-6 col-sm-offset-3'>
+                    <div class="form-group">
+                        <div class='input-group date'>
+                            <input type='text' class="form-control" name="{{ field.name }}" id='{{ field.id }}' />
+                            <span class="input-group-addon" id='{{ field.id }}_picker'>
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $("#" + {{ field.id|tojson }}).datepicker({
+	                      // First day of week
+	                      firstDayOfWeek: 0,
+	                      // Month formats
+	                      months: {
+	                          short: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+	                          long: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+	                      },
+	                      // Display year navigation
+	                      navigateYear: true,
+	                      // Date  output format
+	                      outputFormat:'%Y-%m-%d',
+	                      // Week formats
+	                      weekdays: {
+	                          short: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+	                          long: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+	                      }
+                    });
+                    $("#" + {{ field.id|tojson }}).click(function() {
+                        $("#" + {{ field.id|tojson }}).datepicker.slideUp();
+                    })
+                    $("#" + {{ field.id|tojson }} + "_picker").click(function () {
+                        $("#" + {{ field.id|tojson }}).datepicker.slideUp();
+                    })
+                </script>
+            </div>
+        </div>-->
+        <div class="container">
+            <div class="row">
+                <div class='col-sm-8 col-sm-offset-2'>
+                    <div class="form-group col-sm-12">
+                        <div class='input-group date col-sm-12' id="{{ field.id }}_form">
+                            <div class="ui-input col-sm-8 col-sm-offset-1" style="padding: 0; background-color: white; border: 1px solid #ccc; border-bottom-left-radius: 6px; border-top-left-radius: 6px;">
+                                <input type='text' class="form-control col-sm-12 ui-input ui-corner-left" id='{{ field.id }}' style="background-color: transparent; border-style: none;" />
+                            </div>
+                            <div class="col-sm-2" style="height: 36px; width: 36px"id="{{ field.id }}_button">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                    $("#" + {{ field.id | tojson }}).datepicker({
+                        showOn: 'both',
+                        buttonText: '<span class="ui-icon-calendar ui-icon date-picker-icon"></span>',
+                        dateFormat: "dd-mm-yy"
+                    })
+                        .next("button").addClass("date-picker-button-hidden ui-button ui-corner-right col-sm-12").detach().appendTo("#" + {{ field.id | tojson }} + "_button")
+                </script>
+            </div>
+        </div>
+        {% elif field.type == "PasswordField" %}
+<dd>
+        <div class="row">
+            <div class='col-sm-6 col-sm-offset-3'>
+                <div class='input-group col-sm-12' id='{{ field.id }}'>
+                    <input type='password' class="form-control ui-input" name="{{ field.id }}" />
+                </div>
+            </div>
+        </div>
+    {% elif field.type == "StringField" %}
+    <dd>
+        <div class="row">
+            <div class='col-sm-6 col-sm-offset-3'>
+                <div class='input-group col-sm-12' id='{{ field.id }}'>
+                    <input type='text' class="form-control ui-input" name="{{ field.id }}" />
+                </div>
+            </div>
+        </div>
     {% else %}
-    <dd>{{ field(**kwargs)|safe }}
-    {% endif %}
-    {% if field.errors %}
+    <dd>
+        {{ field(**kwargs)|safe }}
+        {% endif %}
+        {% if field.errors %}
         <ul class=errors>
             {% for error in field.errors %}
             <li class="text-danger">{{ error }}</li>
             {% endfor %}
         </ul>
-        {% endif %}
+    {% endif %}
     </dd>
-{% endmacro %}
+    {% endmacro %}
