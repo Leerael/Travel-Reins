@@ -58,8 +58,8 @@ span.date-picker-icon {
 }
 
 button.date-picker-button-hidden {
-    height: 36px;
-    width: 36px;
+    height: 34px;
+    width: 34px;
     margin: 0;
     padding: 0;
     background-color: black;
@@ -72,6 +72,21 @@ button.date-picker-button-hidden {
     border-radius: 6px !important;
 }
 
+.ui-input-div {
+    padding: 0;
+    background-color: transparent;
+}
+
+.ui-input-date {
+    border: 1px solid #ccc;
+    border-top-left-radius: 6px !important;
+    border-bottom-left-radius: 6px !important;
+}
+
+.panel {
+    background-color: grey;
+}
+
 .jumbotron {
     padding: 30px;
     margin-bottom: 30px;
@@ -79,7 +94,7 @@ button.date-picker-button-hidden {
     font-weight: 200;
     line-height: 2.1428571435;
     color: inherit;
-    background-color: #eeeeee;
+    background-color: darkred;
 }
 
 .table {
