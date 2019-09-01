@@ -1,43 +1,28 @@
 ﻿{% macro render_field(field) %}
 <dt>
+    {% if field.type != "BooleanField" %}
     {{ field.label }}
-    <dd>
+    {% endif %}
+    <dd class="ui-dd">
         {% if field.type == "DateField" %}
-        <div class="container">
-            <div class="row">
-                <div class='col-sm-4 col-sm-offset-4' style="display:inline-block">
-                    <div class="col-sm-10 ui-input-div">
-                        <input type='text' class="form-control col-sm-12 ui-input-date" id='{{ field.id }}' name ="{{ field.id }}" />
-                    </div>
-                    <div class="col-sm-2" style="height: 36px; width: 36px" id="{{ field.id }}_button">
-                    </div>
-                </div>
-                <script type="text/javascript">
-                    $("#" + {{ field.id | tojson }}).datepicker({
-                        showOn: 'both',
-                        buttonText: '<span class="ui-icon-calendar ui-icon date-picker-icon"></span>',
-                        dateFormat: "dd-mm-yy"
-                    })
-                        .next("button").addClass("date-picker-button-hidden ui-button ui-corner-right col-sm-12").detach().appendTo("#" + {{ field.id | tojson }} + "_button")
-                </script>
-            </div>
-        </div>
+        <span class="ui-input-div">
+            <input type='text' class="form-control ui-input-date" name="{{ field.id }}" id="{{ field.id }}" placeholder="dd/mm/yyyy" />
+        </span><span class="ui-input-div" id="{{ field.id }}_button"></span>
+        <script type="text/javascript">
+            $("#" + {{ field.id | tojson }}).datepicker({
+                showOn: 'both',
+                buttonText: '<span class="ui-icon-calendar ui-icon date-picker-icon"></span>',
+                dateFormat: 'dd/mm/yy'
+            })
+                .next("button").addClass("ui-button ui-input-btn").detach().appendTo("#" + {{ field.id | tojson }} + "_button");
+        </script>
         {% elif field.type == "PasswordField" %}
-        <div class="row">
-            <div class='col-sm-6 col-sm-offset-3'>
-                <div class='col-sm-12' id='{{ field.id }}'>
-                    <input type='password' class="form-control ui-input" name="{{ field.id }}" />
-                </div>
-            </div>
-        </div>
+        <input type='password' class="form-control ui-input" name="{{ field.id }}" id="{{ field.id }}" />
         {% elif field.type == "StringField" %}
-        <div class="row">
-            <div class='col-sm-6 col-sm-offset-3'>
-                <div class='col-sm-12' id='{{ field.id }}'>
-                    <input type='text' class="form-control ui-input" name="{{ field.id }}" />
-                </div>
-            </div>
-        </div>
+        <input type='text' class="form-control ui-input" name="{{ field.id }}" id="{{ field.id }}" placeholder="{{ field.name }}" />
+        {% elif field.type == "BooleanField" %}
+        {{ field.label }}
+        <label for="{{ field.id }}"><input type='checkbox' class="form-control ui-input-checkbox" name="{{ field.id }}" id="{{ field.id }} value="y" /></label>
         {% else %}
         {{ field(**kwargs)|safe }}
         {% endif %}
@@ -49,4 +34,5 @@
         </ul>
         {% endif %}
     </dd>
+    <br>
     {% endmacro %}

@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, DateField
-from wtforms.validators import DataRequired, Email, EqualTo, Length
+from wtforms.validators import DataRequired, Email, EqualTo, Length, Optional
 from datetime import date
 
 class LoginForm(FlaskForm):
@@ -18,7 +18,8 @@ class SignupForm(FlaskForm):
     confirm = PasswordField('Confirm Password', validators=[DataRequired()])
     firstName = StringField('First Name', validators=[DataRequired()])
     lastName = StringField('Last Name', validators=[DataRequired()])
-    birthDate = DateField('Birth Date', validators=[DataRequired(), Email()])
-    email = StringField('Email Address', validators=[Length(min=6, max=35)])
+    birthDate = DateField('Birth Date', format='%d/%m/%Y', validators=[Optional()])
+    email = StringField('Email Address', validators=[Length(min=6, max=35), Email()])
     accept_tos = BooleanField('I accept the TOS', validators=[DataRequired()])
     submit = SubmitField('Signup')
+

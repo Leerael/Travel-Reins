@@ -49,6 +49,16 @@ select {
     width: 200px;
 }
 
+a.ui-link {
+    color: dodgerblue !important;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.ui-accordion-content {
+    height: auto !important;
+}
+
 span.date-picker-icon {
     display: inline-block;
     z-index: 1;
@@ -64,12 +74,19 @@ button.date-picker-button-hidden {
     padding: 0;
     background-color: black;
     z-index: 0;
-    left: -16px;
 }
 
-.ui-input {
+input.ui-input {
     border: 1px solid #ccc;
     border-radius: 6px !important;
+}
+
+dd.ui-dd::before {
+    content: none;
+}
+
+input.ui-input-checkbox {
+    border: 1px solid #ccc;
 }
 
 .ui-input-div {
@@ -77,14 +94,33 @@ button.date-picker-button-hidden {
     background-color: transparent;
 }
 
+span.ui-input-div {
+    padding: 0;
+    margin: 0;
+    background-color: transparent;
+    display: inline-block;
+}
+.ui-input-btn {
+    height: 34px;
+    width: 34px;
+    padding: 0;
+    margin: 0;
+    z-index: 0;
+    background-color: transparent;
+    display: inline-block;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
 .ui-input-date {
     border: 1px solid #ccc;
     border-top-left-radius: 6px !important;
     border-bottom-left-radius: 6px !important;
+    padding-right: 0px !important;
 }
 
 .panel {
-    background-color: grey;
+    background-color: transparent;
 }
 
 .jumbotron {
@@ -94,7 +130,7 @@ button.date-picker-button-hidden {
     font-weight: 200;
     line-height: 2.1428571435;
     color: inherit;
-    background-color: darkred;
+    background-color: slategrey;
 }
 
 .table {

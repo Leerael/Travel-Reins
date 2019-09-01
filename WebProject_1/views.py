@@ -63,6 +63,8 @@ def login():
                 connError=connError
             )
         login_user(user, remember=loginForm.remember_me.data)
+        user.lastLoginDate = datetime.utcnow();
+        db.session.commit();
         next_page = request.args.get('next')
         flash('Welcome ' + loginForm.username.data)
         if not next_page or url_parse(next_page).netloc != '':
@@ -91,7 +93,7 @@ def signup():
     if request.method == 'POST' and signupForm.validate_on_submit():
         user = User(username=signupForm.username.data, email=signupForm.email.data,
                     password_hash=signupForm.password.data, firstName=signupForm.firstName.data, 
-                    lastName=signupForm.lastName.data, birthDate=signupForm.birthDate.data)
+                    lastName=signupForm.lastName.data, birthDate=datetime.strptime(signupForm.birthDate.data.strftime('%Y-%m-%d'), '%Y-%m-%d').date())
         user.set_password(signupForm.password.data)
         if User.query.filter_by(username=signupForm.username.data).first() != None:
             isError = True
