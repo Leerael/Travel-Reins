@@ -1,0 +1,131 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<script type="text/javascript" src="/static/scripts/jquery.fulltable.js"></script>
+<link rel="stylesheet" href="/static/content/jquery.fulltable.css" />
+<link rel="stylesheet" href="/static/content/itinerary.css" />
+
+<h2>{{ title }}.</h2>
+<h3>{{ message }}</h3>
+
+<p>You can pick dates for many things, but you should always start with your arrival and departure dates.</p>
+<br />
+<div>
+    <button class="ui-button ui-corner-all ui-widget">New Itinerary</button>
+</div>
+<br />
+<div>
+    <p>Saved Itineraries </p>
+    <select id="selectmenu">
+        <option>Indonesia Trip</option>
+        <option>Australia Trip</option>
+        <option>Europe Trip</option>
+    </select>
+</div>
+<br />
+
+<div class="col-lg-6">
+    <p>Trip Plan</p>
+    <div class="col-xs-12" id="tabs-itinerary">
+        <ul>
+            <li><a href="#tabs-1">Itinerary</a></li>
+        </ul>
+        <div class="scrolling-wrapper-flexbox" id="tabs-1">
+            {% from "user/itinerary/_itinerary.html" import render_itinerary %}
+            {{ render_itinerary() }}
+        </div>
+    </div>
+</div>
+
+<div class="col-lg-6">
+    <p>Trip Requirements</p>
+    <div class="col-xs-12" id="tabs-planner">
+        <ul>
+            <li><a href="#tabs-2">Countries</a></li>
+            <li><a href="#tabs-3">Places</a></li>
+            <li><a href="#tabs-4">Transport</a></li>
+            <li><a href="#tabs-5">Accommodation</a></li>
+        </ul>
+        <div class="scrolling-wrapper-flexbox" id="tabs-2">
+            {% from "user/itinerary/_countries.html" import render_countries %}
+            {{ render_countries() }}
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-3">
+            {% from "user/itinerary/_places.html" import render_places %}
+            {{ render_places() }}
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-4">
+            {% from "user/itinerary/_transport.html" import render_transport %}
+            {{ render_transport() }}
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-5">
+            {% from "user/itinerary/_accommodation.html" import render_accommodation %}
+            {{ render_accommodation() }}
+        </div>
+    </div>
+    <br />
+
+    <p>Trip Activities</p>
+    <div class="col-xs-12" id="tabs-activities">
+        <ul>
+            <li><a href="#tabs-6">Activities</a></li>
+        </ul>
+        <div class="scrolling-wrapper-flexbox" id="tabs-6">
+            {% from "user/itinerary/_activities.html" import render_activities %}
+            {{ render_activities() }}
+        </div>
+    </div>
+    <br />
+
+    <p>Trip Items</p>
+    <div class="col-xs-12" id="tabs-items">
+        <ul>
+            <li><a href="#tabs-7">Equipment</a></li>
+            <li><a href="#tabs-8">Luggage</a></li>
+        </ul>
+        <div class="scrolling-wrapper-flexbox" id="tabs-7">
+            <p>Equipment</p>
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-8">
+            <p>Luggage</p>
+        </div>
+    </div>
+    <br />
+
+    <p>Trip Extras</p>
+    <div class="col-xs-12" id="tabs-extra">
+        <ul>
+            <li><a href="#tabs-9">Phone</a></li>
+            <li><a href="#tabs-10">Insurance</a></li>
+            <li><a href="#tabs-11">Visa</a></li>
+            <li><a href="#tabs-12">Vaccination</a></li>
+            <li><a href="#tabs-13">Extras</a></li>
+        </ul>
+        <div class="scrolling-wrapper-flexbox" id="tabs-9">
+            <p>Phone</p>
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-10">
+            <p>Insurance</p>
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-11">
+            <p>Visa</p>
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-12">
+            <p>Vaccinations</p>
+        </div>
+        <div class="scrolling-wrapper-flexbox" id="tabs-13">
+            <p>Extras</p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#tabs-itinerary").tabs();
+    $("#tabs-planner").tabs();
+    $("#tabs-activities").tabs();
+    $("#tabs-items").tabs();
+    $("#tabs-extra").tabs();
+</script>
+
+{% endblock %}

@@ -1,0 +1,202 @@
+﻿{% macro render_transport() %}
+<p>Itinerary - Indonesia Trip</p>
+<div class="row card">
+    <div class="container col-lg-12">
+        <table class="fulltable fulltable-editable" id="transport-table">
+            <thead>
+                <tr>
+                    <th fulltable-field-name="rowid">#</th>
+                    <th fulltable-field-name="departcountry">Depart Country</th>
+                    <th fulltable-field-name="departcity">Depart City</th>
+                    <th fulltable-field-name="transporttype">Transport Type</th>
+                    <th fulltable-field-name="arrivecountry">Arrive Country</th>
+                    <th fulltable-field-name="arrivecity">Arrive City</th>
+                    <th fulltable-field-name="start">Start</th>
+                    <th fulltable-field-name="end">End</th>
+                    <th fulltable-field-name="duration">Durat.</th>
+                    <th fulltable-field-name="cost">Cost</th>
+                    <th fulltable-field-name="description">Desc.</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <a href="#" class="button btn btn-danger" id="test-table-get-value">> Get value</a>
+    </div>
+</div>
+<script>
+    $("#transport-table").FullTable({
+        "alwaysCreating": true,
+        "selectable": true,
+        "fields": {
+            "rowid": {
+                "type": "integer",
+                "mandatory": false,
+                "validator": function (id) {
+                    if (id >= 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+            },
+            "departcountry": {
+                "options": [
+                    {
+                        "title": "Australia",
+                        "value": "a"
+                    },
+                    {
+                        "title": "Indonesia",
+                        "value": "i"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "A Departure Country is Mandatory."
+                }
+            },
+            "departcity": {
+                "options": [
+                    {
+                        "title": "Adelaide",
+                        "value": "aa"
+                    },
+                    {
+                        "title": "Qatar",
+                        "value": "iq"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "A Departure City is Mandatory."
+                }
+            },
+            "arrivecountry": {
+                "options": [
+                    {
+                        "title": "Australia",
+                        "value": "a"
+                    },
+                    {
+                        "title": "Indonesia",
+                        "value": "i"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "An Arrival Country is Mandatory."
+                }
+            },
+            "arrivecity": {
+                "options": [
+                    {
+                        "title": "Adelaide",
+                        "value": "aa"
+                    },
+                    {
+                        "title": "Qatar",
+                        "value": "iq"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "An Arrival City is Mandatory."
+                }
+            },
+            "transporttype": {
+                "options": [
+                    {
+                        "title": "Drive",
+                        "value": "d"
+                    },
+                    {
+                        "title": "Boat",
+                        "value": "b"
+                    },
+                    {
+                        "title": "Flight",
+                        "value": "f"
+                    },
+                    {
+                        "title": "Train",
+                        "value": "t"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "Transport Type is Mandatory."
+                }
+            },
+            "start": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "Start Date must be a date",
+                    "mandatory": "Start Date is mandatory"
+                }
+            },
+            "end": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "End Date must be a date",
+                    "mandatory": "End Date is mandatory"
+                }
+            },
+            "duration": {
+                "type": "decimal",
+                "mandatory": false,
+                "validator": function (duration) {
+                    if (duration >= 0.0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                "errors": {
+                    "type": "Duration must be a number",
+                    "mandatory": "Duration is mandatory",
+                    "validator": "Duration cannot be less than 0"
+                }
+            },
+            "cost": {
+                "type": "decimal",
+                "mandatory": true,
+                "validator": function (cost) {
+                    if (cost >= 0.0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                "errors": {
+                    "type": "Cost must be a number",
+                    "mandatory": "Cost is mandatory",
+                    "validator": "Cost cannot be less than 0"
+                }
+            },
+            "description": {
+                "mandatory": false
+            }
+        }
+    });
+    $("#transport-table-add-row").click(function () {
+        $("#transport-table").FullTable("addRow");
+    });
+    $("#transport-table-get-value").click(function () {
+        console.log($("#transport-table").FullTable("getData"));
+    });
+    $("#transport-table").FullTable("on", "error", function (errors) {
+        for (var error in errors) {
+            error = errors[error];
+            console.log(error);
+        }
+    });
+    $("#transport-table").FullTable("draw");
+</script>
+{% endmacro %}

@@ -38,6 +38,17 @@
     <Compile Include="WebProject_1\models.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="WebProject_1\templates\admin\forms.py" />
+    <Compile Include="WebProject_1\templates\admin\views.py" />
+    <Compile Include="WebProject_1\templates\admin\__init__.py" />
+    <Compile Include="WebProject_1\templates\auth\forms.py" />
+    <Compile Include="WebProject_1\templates\auth\views.py" />
+    <Compile Include="WebProject_1\templates\auth\__init__.py" />
+    <Compile Include="WebProject_1\templates\home\views.py" />
+    <Compile Include="WebProject_1\templates\home\__init__.py" />
+    <Compile Include="WebProject_1\templates\user\forms.py" />
+    <Compile Include="WebProject_1\templates\user\views.py" />
+    <Compile Include="WebProject_1\templates\user\__init__.py" />
     <Compile Include="WebProject_1\__init__.py" />
     <Compile Include="WebProject_1\views.py" />
   </ItemGroup>
@@ -49,9 +60,30 @@
     <Folder Include="WebProject_1\static\fonts\" />
     <Folder Include="WebProject_1\static\scripts\" />
     <Folder Include="WebProject_1\templates\" />
+    <Folder Include="WebProject_1\templates\admin\" />
+    <Folder Include="WebProject_1\templates\auth\" />
+    <Folder Include="WebProject_1\templates\home\" />
+    <Folder Include="WebProject_1\templates\user\" />
+    <Folder Include="WebProject_1\templates\user\itinerary\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="WebProject_1\static\content\itinerary.css" />
+    <Content Include="WebProject_1\static\content\jquery.fulltable.css" />
+    <Content Include="WebProject_1\static\fonts\jquery.fulltable.eot" />
+    <Content Include="WebProject_1\static\fonts\jquery.fulltable.svg" />
+    <Content Include="WebProject_1\static\fonts\jquery.fulltable.ttf" />
+    <Content Include="WebProject_1\static\fonts\jquery.fulltable.woff" />
+    <Content Include="WebProject_1\static\fonts\jquery.fulltable.woff2" />
+    <Content Include="WebProject_1\static\images\add.svg" />
+    <Content Include="WebProject_1\static\images\discard.svg" />
+    <Content Include="WebProject_1\static\images\down_arrow.svg" />
+    <Content Include="WebProject_1\static\images\edit.svg" />
+    <Content Include="WebProject_1\static\images\jquery.fulltable.sfd" />
+    <Content Include="WebProject_1\static\images\left_arrow.svg" />
+    <Content Include="WebProject_1\static\images\remove.svg" />
+    <Content Include="WebProject_1\static\images\right_arrow.svg" />
+    <Content Include="WebProject_1\static\images\save.svg" />
     <Content Include="WebProject_1\static\images\ui-bg_glass_40_ffc73d_1x400.png" />
     <Content Include="WebProject_1\static\images\ui-bg_highlight-hard_20_0972a5_1x100.png" />
     <Content Include="WebProject_1\static\images\ui-bg_highlight-soft_33_003147_1x100.png" />
@@ -78,6 +110,7 @@
     <Content Include="WebProject_1\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="WebProject_1\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="WebProject_1\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebProject_1\static\images\up_arrow.svg" />
     <Content Include="WebProject_1\static\scripts\bootstrap.js" />
     <Content Include="WebProject_1\static\scripts\bootstrap.min.js" />
     <Content Include="WebProject_1\static\scripts\jquery-3.4.1.js" />
@@ -85,6 +118,7 @@
     <Content Include="WebProject_1\static\scripts\jquery-3.4.1.min.map" />
     <Content Include="WebProject_1\static\scripts\jquery-ui.js" />
     <Content Include="WebProject_1\static\scripts\jquery-ui.min.js" />
+    <Content Include="WebProject_1\static\scripts\jquery.fulltable.js" />
     <Content Include="WebProject_1\static\scripts\webproject.js" />
     <Content Include="WebProject_1\static\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="WebProject_1\static\scripts\jquery-1.10.2.js" />
@@ -99,12 +133,22 @@
     <Content Include="WebProject_1\static\scripts\respond.js" />
     <Content Include="WebProject_1\static\scripts\respond.min.js" />
     <Content Include="WebProject_1\static\scripts\_references.js" />
-    <Content Include="WebProject_1\templates\about.html" />
-    <Content Include="WebProject_1\templates\contact.html" />
-    <Content Include="WebProject_1\templates\itinerary.html" />
-    <Content Include="WebProject_1\templates\index.html" />
+    <Content Include="WebProject_1\templates\home\about.html" />
+    <Content Include="WebProject_1\templates\home\contact.html" />
+    <Content Include="WebProject_1\templates\home\dashboard.html" />
+    <Content Include="WebProject_1\templates\home\support.html" />
+    <Content Include="WebProject_1\templates\user\blog.html" />
+    <Content Include="WebProject_1\templates\user\forum.html" />
+    <Content Include="WebProject_1\templates\user\itinerary.html" />
+    <Content Include="WebProject_1\templates\home\index.html" />
     <Content Include="WebProject_1\templates\layout.html" />
-    <Content Include="WebProject_1\templates\login.html" />
+    <Content Include="WebProject_1\templates\auth\login.html" />
+    <Content Include="WebProject_1\templates\user\itinerary\_accommodation.html" />
+    <Content Include="WebProject_1\templates\user\Itinerary\_activities.html" />
+    <Content Include="WebProject_1\templates\user\itinerary\_countries.html" />
+    <Content Include="WebProject_1\templates\user\itinerary\_itinerary.html" />
+    <Content Include="WebProject_1\templates\user\itinerary\_places.html" />
+    <Content Include="WebProject_1\templates\user\itinerary\_transport.html" />
     <Content Include="WebProject_1\templates\_formhelpers.html" />
   </ItemGroup>
   <ItemGroup>

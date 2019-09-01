@@ -1,0 +1,106 @@
+﻿{% macro render_countries() %}
+<p>Itinerary - Indonesia Trip</p>
+<div class="row card">
+    <div class="container col-lg-12">
+        <table class="fulltable fulltable-editable" id="countries-table">
+            <thead>
+                <tr>
+                    <th fulltable-field-name="rowid">#</th>
+                    <th fulltable-field-name="country">Country</th>
+                    <th fulltable-field-name="start">Start</th>
+                    <th fulltable-field-name="end">End</th>
+                    <th fulltable-field-name="duration">Durat.</th>
+                    <th fulltable-field-name="description">Desc.</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <a href="#" class="button btn btn-danger" id="test-table-get-value">> Get value</a>
+    </div>
+</div>
+<script>
+    $("#countries-table").FullTable({
+        "alwaysCreating": true,
+        "selectable": true,
+        "fields": {
+            "rowid": {
+                "type": "integer",
+                "mandatory": false,
+                "validator": function (id) {
+                    if (id >= 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+            },
+            "country": {
+                "options": [
+                    {
+                        "title": "Australia",
+                        "value": "a"
+                    },
+                    {
+                        "title": "Indonesia",
+                        "value": "i"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "Country is Mandatory."
+                }
+            },
+            "start": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "Start Date must be a date",
+                    "mandatory": "Start Date is mandatory"
+                }
+            },
+            "end": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "End Date must be a date",
+                    "mandatory": "End Date is mandatory"
+                }
+            },
+            "duration": {
+                "type": "decimal",
+                "mandatory": false,
+                "validator": function (duration) {
+                    if (duration >= 0.0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                "errors": {
+                    "type": "Duration must be a number",
+                    "mandatory": "Duration is mandatory",
+                    "validator": "Duration cannot be less than 0"
+                }
+            },
+            "description": {
+                "mandatory": false
+            }
+        }
+    });
+    $("#countries-table-add-row").click(function () {
+        $("#countries-table").FullTable("addRow");
+    });
+    $("#countries-table-get-value").click(function () {
+        console.log($("#countries-table").FullTable("getData"));
+    });
+    $("#countries-table").FullTable("on", "error", function (errors) {
+        for (var error in errors) {
+            error = errors[error];
+            console.log(error);
+        }
+    });
+    $("#countries-table").FullTable("draw");
+</script>
+{% endmacro %}

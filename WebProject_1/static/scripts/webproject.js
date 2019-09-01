@@ -123,6 +123,7 @@ $("#dialog-link, #icons li").hover(
     }
 );
 
+
 // Accepted additional formats [here, allow for example "4/7/18" for "July 4, 2018"]
 $.datepicker.additionalFormats = ["ddmmy", "ddmmyy", "d/m/y", "d/m/yy", "d/mm/y", "dd/m/y", "dd/m/yy", "dd/mm/y"];
 // Backup the original parsing function

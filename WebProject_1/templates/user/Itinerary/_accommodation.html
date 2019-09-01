@@ -1,0 +1,166 @@
+﻿{% macro render_accommodation() %}
+<p>Itinerary - Indonesia Trip</p>
+<div class="row card">
+    <div class="container col-lg-12">
+        <table class="fulltable fulltable-editable" id="accommodation-table">
+            <thead>
+                <tr>
+                    <th fulltable-field-name="rowid">#</th>
+                    <th fulltable-field-name="country">Country</th>
+                    <th fulltable-field-name="city">City</th>
+                    <th fulltable-field-name="accommodationtype">Accommodation Type</th>
+                    <th fulltable-field-name="start">Check In</th>
+                    <th fulltable-field-name="end">Check Out</th>
+                    <th fulltable-field-name="duration">Durat.</th>
+                    <th fulltable-field-name="cost">Cost</th>
+                    <th fulltable-field-name="description">Desc.</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+        <a href="#" class="button btn btn-danger" id="test-table-get-value">> Get value</a>
+    </div>
+</div>
+<script>
+    $("#accommodation-table").FullTable({
+        "alwaysCreating": true,
+        "selectable": true,
+        "fields": {
+            "rowid": {
+                "type": "integer",
+                "mandatory": false,
+                "validator": function (id) {
+                    if (id >= 0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+            },
+            "country": {
+                "options": [
+                    {
+                        "title": "Australia",
+                        "value": "a"
+                    },
+                    {
+                        "title": "Indonesia",
+                        "value": "i"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "A Country is Mandatory."
+                }
+            },
+            "city": {
+                "options": [
+                    {
+                        "title": "Adelaide",
+                        "value": "aa"
+                    },
+                    {
+                        "title": "Qatar",
+                        "value": "iq"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "A City is Mandatory."
+                }
+            },
+            "accommodationtype": {
+                "options": [
+                    {
+                        "title": "Hotel",
+                        "value": "ho"
+                    },
+                    {
+                        "title": "Hostel",
+                        "value": "hs"
+                    },
+                    {
+                        "title": "AirBnB",
+                        "value": "ai"
+                    },
+                    {
+                        "title": "Liveaboard",
+                        "value": "la"
+                    }
+                ],
+                "mandatory": true,
+                "placeholder": "Select one",
+                "errors": {
+                    "mandatory": "Accommodation Type is Mandatory."
+                }
+            },
+            "start": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "Start Date must be a date",
+                    "mandatory": "Start Date is mandatory"
+                }
+            },
+            "end": {
+                "type": "date",
+                "mandatory": false,
+                "errors": {
+                    "type": "End Date must be a date",
+                    "mandatory": "End Date is mandatory"
+                }
+            },
+            "duration": {
+                "type": "decimal",
+                "mandatory": false,
+                "validator": function (duration) {
+                    if (duration >= 0.0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                "errors": {
+                    "type": "Duration must be a number",
+                    "mandatory": "Duration is mandatory",
+                    "validator": "Duration cannot be less than 0"
+                }
+            },
+            "cost": {
+                "type": "decimal",
+                "mandatory": true,
+                "validator": function (cost) {
+                    if (cost >= 0.0) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                "errors": {
+                    "type": "Cost must be a number",
+                    "mandatory": "Cost is mandatory",
+                    "validator": "Cost cannot be less than 0"
+                }
+            },
+            "description": {
+                "mandatory": false
+            }
+        }
+    });
+    $("#accommodation-table-add-row").click(function () {
+        $("#accommodation-table").FullTable("addRow");
+    });
+    $("#accommodation-table-get-value").click(function () {
+        console.log($("#accommodation-table").FullTable("getData"));
+    });
+    $("#accommodation-table").FullTable("on", "error", function (errors) {
+        for (var error in errors) {
+            error = errors[error];
+            console.log(error);
+        }
+    });
+    $("#accommodation-table").FullTable("draw");
+</script>
+{% endmacro %}
